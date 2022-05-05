@@ -22,7 +22,7 @@ let petName = "Rocky";
 
 function imprimir() {
   let petName = "Beto";
-  //console.log(petName);
+  console.log(petName);
 }
 
 imprimir();
@@ -52,7 +52,7 @@ function multiplicar(numero1, numero2) {
   );
 }
 
-function dividir(numero1, numero2) {
+function dividir(numero1, numero2 = 1) {
   console.log(`La división de ${numero1} y ${numero2} es ${numero1 / numero2}`);
 }
 
@@ -75,7 +75,7 @@ function calculadora(operacion, numero1, numero2) {
 calculadora("sumar", 10, 8);
 calculadora("restar", 10, 8);
 calculadora("multiplicar", 10, 8);
-calculadora("dividir", 10, 8);
+calculadora("dividir", 10);
 calculadora("potencia", 10, 8);
 
 // arrow functions / funciones de flecha
@@ -96,3 +96,97 @@ calculadora2(2, 8, sumar);
 calculadora2(2, 8, restar);
 calculadora2(2, 8, multiplicar);
 calculadora2(2, 8, dividir);
+//default params
+function showAge(edad = 0) {
+  console.log("la edad es: ", edad);
+}
+
+const showLastName = (lastName = "") => {
+  console.log("lastName : ", lastName);
+};
+
+showAge(29);
+showLastName();
+
+//******* OBJETOS *******
+
+let persona = {
+  nombre: "Claus",
+  apellido: "Chocho",
+  edad: 29,
+  graduado: true,
+  titulo: {
+    universidad: "UDA",
+    nombreTitulo: "Ing. Sistemas",
+  },
+};
+
+console.table(persona);
+
+//crear una funcion que permita obtener
+//el nombre del titulo de la persona
+
+const getNombreTitulo = (objetoPersona) => {
+  return objetoPersona.titulo.nombreTitulo;
+};
+
+function getNombreTituloTradicional(objetoPersona) {
+  return objetoPersona["titulo"].nombreTitulo;
+}
+
+console.log(getNombreTitulo(persona));
+console.log(getNombreTituloTradicional(persona));
+
+persona.direccion = "Parroquia Santa Ana";
+persona.edad = 19;
+
+//console.log("persona -> ", persona);
+
+//desestructuracion de objetos
+
+const { nombre, apellido, titulo } = persona;
+
+console.log("desestructuracion ->", nombre);
+console.log("desestructuracion ->", apellido);
+
+console.log("desestructuracion ->", titulo);
+
+const { universidad, nombreTitulo } = titulo;
+console.log("desestructuracion titulo ->", universidad);
+console.log("desestructuracion titulo ->", nombreTitulo);
+// spread operation
+let persona2 = { ...persona };
+
+persona2.nombre = "Juan";
+persona2.apellido = "Calle";
+
+console.log("persona2 -> ", persona2);
+console.log("persona -> ", persona);
+
+const { edad, graduado, direccion, ...resto } = persona;
+
+let persona3 = { edad, graduado, direccion };
+
+console.log("persona3 -> ", persona3);
+console.log("resto -> ", resto);
+
+//Objecto constructor
+
+function Casa(precio, ubicacion, pisos, banios) {
+  this.precio = precio;
+  this.ubicacion = ubicacion;
+  this.pisos = pisos;
+  this.banios = banios;
+}
+
+const casa1 = new Casa(15000, "Santa Ana", 1, 2);
+const casa2 = new Casa(25000, "Santa Ana", 2, 3);
+
+console.log("casa1 ", casa1);
+console.log("casa2 ", casa2);
+
+// 1- Crear un objeto anidado que contenga informacion sobre un automovil
+// 2- vamos a crear un funcion tradicional que obtenga el objeto anidado del obejto principal
+//mediante spread operation (console.table)
+// 3- vamos a crear funcion de flecha que obtenga la placa del automovil del objeto principal
+//
