@@ -218,3 +218,12 @@ const getPlaca = () => {
   console.log("placa -> ", placa);
 };
 getPlaca();
+
+//const nombreFuncion = (parametros) => {}
+
+const getColor = () => {
+  //...
+  return 1;
+};
+
+getColor();
