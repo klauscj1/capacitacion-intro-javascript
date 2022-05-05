@@ -186,7 +186,35 @@ console.log("casa1 ", casa1);
 console.log("casa2 ", casa2);
 
 // 1- Crear un objeto anidado que contenga informacion sobre un automovil
+
+let automovil = {
+  placa: "ABC123",
+  marca: "Chevrolet",
+  modelo: "Grand Vitara",
+  anio: 2016,
+  motor: {
+    cilindros: 4,
+    cilindraje: 1600,
+  },
+};
+
+console.log("automovil -> ", automovil);
 // 2- vamos a crear un funcion tradicional que obtenga el objeto anidado del obejto principal
 //mediante spread operation (console.table)
+
+function getMotor() {
+  const { motor } = automovil;
+  console.log("motor -> ", motor);
+}
+
+getMotor();
+
 // 3- vamos a crear funcion de flecha que obtenga la placa del automovil del objeto principal
-//
+
+const getPlaca = () => {
+  const { placa } = automovil;
+  // const placa = automovil.placa;
+  //const placa = automovil["placa"];
+  console.log("placa -> ", placa);
+};
+getPlaca();
