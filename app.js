@@ -227,3 +227,57 @@ const getColor = () => {
 };
 
 getColor();
+
+//******* PROTOTYPE *******
+// trabajan directo con objetos creados por una funcion
+
+function Videojuego(titulo, genero, consola, costo) {
+  this.titulo = titulo;
+  this.genero = genero;
+  this.consola = consola;
+  this.costo = 80;
+}
+
+Videojuego.prototype.iniciarPartida = function () {
+  console.log(`Iniciando ${this.titulo} por favor espere...`);
+};
+
+const vdj1 = new Videojuego("GH3", "Musical", "PC");
+
+console.log(vdj1);
+
+vdj1.iniciarPartida();
+
+//Ejemplo de herencia
+
+function Animal(nombre, tamano) {
+  this.nombre = nombre;
+  this.tamano = tamano;
+}
+
+Animal.prototype.comer = function () {
+  console.log("Estoy comiendo...");
+};
+
+Animal.prototype.dormir = function () {
+  console.log("zzz...zzz...zzz....");
+};
+
+function Gato(nombre, tamano, bigotes) {
+  this.super = Animal;
+  this.super(nombre, tamano);
+  this.bigotes = bigotes;
+}
+
+Gato.prototype.maullar = function () {
+  console.log("Miaaauuuuu....");
+};
+
+const rony = new Gato("rony", "mediano", true);
+
+rony.maullar();
+
+console.log("nombre animal", rony);
+
+//obtener nombre de las claves de un objeto
+console.log(Object.keys(vdj1));
